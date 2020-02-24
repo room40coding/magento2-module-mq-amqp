@@ -2,6 +2,7 @@
 
 namespace Rcason\MqAmqp\Model;
 
+use PhpAmqpLib\Message\AMQPMessage;
 use Rcason\Mq\Api\Data\MessageEnvelopeInterface;
 use Rcason\Mq\Api\Data\MessageEnvelopeInterfaceFactory;
 
@@ -52,9 +53,7 @@ class AmqpBroker implements \Rcason\Mq\Api\BrokerInterface
         $message = new AMQPMessage(
             $messageEnvelope->getContent(), [
                 'content_type' => $messageEnvelope->getContentType(),
-                'delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT,
-                'retries' => 0,
-                'run_task_at' => null,
+                'delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT
             ]
         );
         
